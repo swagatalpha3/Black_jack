@@ -23,33 +23,22 @@ class Card(Deck):
 
     def __init__(self):
         Deck.__init__(self)
-        self.player1 = []
-        self.player2 = []
+        self.player_hand = []
 
     def __str__(self):
         return Deck.current_deck[0]
 
-    def pull_card(self, number_of_cards, player):
-        if player == 1:
-            for num in range(number_of_cards):
-                self.player1.append(Deck.current_deck[num])
-        else:
-            for num in range(number_of_cards):
-                self.player2.append(Deck.current_deck[num])
+    def pull_card(self, number_of_cards):
+        for num in range(number_of_cards):
+            self.player_hand.append(Deck.current_deck[num])
         for num in range(number_of_cards):
             Deck.current_deck.pop(0)
 
-    def total_value(self, player):
-        if player == 1:
-            total = 0
-            for number in range(len(self.player1)):
-                total += Card.values[self.player1[number].split(' ')[0]]
-            return total
-        else:
-            total = 0
-            for number in range(len(self.player2)):
-                total += Card.values[self.player2[number].split(' ')[0]]
-            return total
+    def total_value(self):
+        total = 0
+        for number in range(len(self.player_hand)):
+            total += Card.values[self.player_hand[number].split(' ')[0]]
+        return total
 
 
 if __name__ == '__main__':
@@ -62,11 +51,18 @@ if __name__ == '__main__':
     # print(deck1.current_deck)
     # print(deck2.current_deck)
     # print(deck1)
-    deck2.pull_card(3, 2)
-    print(deck2.player2)
-    print(deck2.total_value(2))
-    deck2.pull_card(3, 1)
-    print(deck2.player1)
-    print(deck2.total_value(1))
+    deck2.pull_card(3)
+    print(deck2.player_hand)
+    print(deck2.total_value())
+    deck1.pull_card(3)
+    print(deck1.player_hand)
+    print(deck1.total_value())
+    print('###############')
+    deck2.pull_card(1)
+    print(deck2.player_hand)
+    print(deck2.total_value())
+    deck1.pull_card(1)
+    print(deck1.player_hand)
+    print(deck1.total_value())
     # print(random.sample(deck2.current_deck, k=52))
     # # print(len(deck1.current_deck))
