@@ -64,5 +64,6 @@ if __name__ == '__main__':
     deck1.pull_card(1)
     print(deck1.player_hand)
     print(deck1.total_value())
+    print(len(deck2.current_deck))
     # print(random.sample(deck2.current_deck, k=52))
     # # print(len(deck1.current_deck))

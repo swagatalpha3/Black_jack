@@ -15,12 +15,14 @@ class BankRoll():
         else:
             print('You have insufficient balance')
             print(f"Total balance in your account is {self.amount} Euros")
-        return self.amount
 
     def win(self, win_amount):
         self.amount += win_amount
         print(f"{win_amount} Euros added to your account")
         print(f"Total balance in your account is {self.amount} Euros")
+
+    def balance(self):
+        return self.amount
 
 
 if __name__ == "__main__":
